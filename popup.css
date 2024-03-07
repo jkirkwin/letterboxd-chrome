@@ -1,0 +1,13 @@
+body {
+    min-width: 500;
+    min-height: 100;
+}
+
+h1 {
+    text-align: center;
+    background-color: aliceblue;
+}
+
+p {
+    font-size: large;
+}

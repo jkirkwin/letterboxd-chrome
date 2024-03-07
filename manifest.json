@@ -4,7 +4,7 @@
     "description": "Replace google watchlist actions with letterboxd equivalents",
     "version": "1.0",
     "action": {
-        "default_popup": "hello.html" // TODO rename
+        "default_popup": "popup.html"
     },
     "icons": {
         "16": "assets/film_logo_color_16.png",
