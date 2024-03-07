@@ -4,8 +4,13 @@
     "description": "Replace google watchlist actions with letterboxd equivalents",
     "version": "1.0",
     "action": {
-        "default_popup": "hello.html", // TODO rename
-        "default_icon": "assets/letterboxd_logo.png" // TODO Add proper icons of different sizes. Probably can't use their logo directly either.
+        "default_popup": "hello.html" // TODO rename
+    },
+    "icons": {
+        "16": "assets/film_logo_color_16.png",
+        "32": "assets/film_logo_color_32.png",
+        "48": "assets/film_logo_color_48.png",
+        "128": "assets/film_logo_color_128.png"
     },
     "content_scripts": [
         {
