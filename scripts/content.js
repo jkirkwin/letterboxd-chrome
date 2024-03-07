@@ -13,6 +13,9 @@ function error(message) {
 }
 
 function tryAddFilmInfo() {
+    // TODO This won't work for obscure movies that don't have any watch options. 
+    // E.g. https://www.google.com/search?q=chaos+DeFalco, https://www.google.com/search?q=four+lions
+    // Find a backup option to use to get formatting and detect that the user did in fact search a movie.
     const watchMovieDiv = document.querySelector('div[aria-label="Watch movie"]');
     if (watchMovieDiv) {
         log("Detected a film in search results");
@@ -51,6 +54,11 @@ function buildLetterboxdSearchSection(watchMovieDiv, filmTitle) {
 
     // Add a link to search for the film on letterboxd
     const linkContainer = document.createElement('a')
+    // TODO May be able to link directly to the letterboxd film page. 
+    // In most cases the url is just the film name with spaces subbed for hyphens, and in others they include the year.
+    // It seems like we could add the year every time and let their redirects handle it.
+    // If there are a few edge cases where this won't work, can try sending an https request to the film url we want to try,
+    // and fall back to using this search link if it fails.
     linkContainer.href = `https://letterboxd.com/search/films/${filmTitle}/`
     linkContainer.style.color = 'inherit'
     linkContainer.style.display = 'flex'
