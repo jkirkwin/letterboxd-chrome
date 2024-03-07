@@ -37,15 +37,15 @@ function tryAddFilmInfo() {
  * and the title of the film to search.
  */
 function buildLetterboxdSearchSection(watchMovieDiv, filmTitle) {
-    // TODO Add horizontal divider between new section and "Watch movie"
-
     const contentContainer = document.createElement('div');
+    contentContainer.style.padding = '0 0 10px 0'
 
     // Pull the "Watch movie" heading from the page and copy it to get a consistently-styled heading
     // for the letterboxd section. They've just used div's everywhere (i.e. no h1/h2/etc.), so we'll do the same.
     const sampleHeading = watchMovieDiv.querySelector('div[aria-level="2"][role="heading"]');
     const sampleHeadingContainer = sampleHeading.parentElement
     const headingContainer = sampleHeadingContainer.cloneNode(true)
+    headingContainer.style.padding = '0 0 10px 0'
     headingContainer.firstChild.textContent = 'Letterboxd'
     contentContainer.appendChild(headingContainer)
 
@@ -56,7 +56,6 @@ function buildLetterboxdSearchSection(watchMovieDiv, filmTitle) {
     linkContainer.style.display = 'flex'
     linkContainer.style.alignItems = 'center'
     linkContainer.style.gap = '10px'
-    linkContainer.style.padding = '10px 5px'
 
     const logoImage = document.createElement('img')
     logoImage.src = chrome.runtime.getURL('assets/letterboxd_logo.png')
@@ -70,7 +69,15 @@ function buildLetterboxdSearchSection(watchMovieDiv, filmTitle) {
 
     contentContainer.appendChild(linkContainer)
 
+    // Add a horizontal rule below the new content
+    const separator = watchMovieDiv.querySelector('[role="separator"]')?.cloneNode() ?? document.createElement('hr')
+    contentContainer.appendChild(separator)
+
     return contentContainer
 }
+
+// TODO When on a page like https://www.google.com/search?sa=X&sca_esv=eab7f0f30e16ba03&biw=1032&bih=738&sxsrf=ACQVn0_7ZiyZ8GWMzOP0CiSwAM5WzLRugA:1709789662998&si=AKbGX_oBDfquzodaRrfbb9img4kPQ4fCBZjeqAiaW1svvC8uXheAX-kHFU4c0bex6eNeXQ3iMkESrR-67uRmjGFFyrLdv_w9jpayDPg1ABrWxypVf4IngX5g3x7JDvW-5CunMxL5RJrp8xtX21LUmFr4PScuFW2f5I3DsvCBRUfAbU31bsoXfaEYYDbznqcvbUhIdIyBOaNJX7_T9pH8QLb5Tb_gVw7XatNWykV5MM0CY5QNkXLVn287HADS5x3HxlLsAkHxP8Nn0l_Qb52csV7OK2G3s6y79A%3D%3D&q=Once+Upon+a+Time+in+America&lei=5FHpZYb4CoK80PEPofmMgAk
+// where the user can switch between movies, we need to redo the link generation process. Likely we can just detect changes
+// to the search query and/or url.
 
 tryAddFilmInfo()
