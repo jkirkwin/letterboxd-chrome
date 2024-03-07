@@ -1,18 +1,30 @@
 {
-  "manifest_version": 3,
-  "name": "Chrome Letterboxd",
-  "description": "Replace google watchlist actions with letterboxd equivalents",
-  "version": "1.0",
-  "action": {
-    "default_popup": "hello.html", // TODO rename
-    "default_icon": "letterboxd_logo.png" // TODO Add proper icons of different sizes. Probably can't use their logo directly either.
-  },
-  "content_scripts": [
-    {
-      "js": ["scripts/content.js"],
-      "matches": [
-        "https://www.google.com/search*"
-      ]
-    }
-  ]
+    "manifest_version": 3,
+    "name": "Chrome Letterboxd",
+    "description": "Replace google watchlist actions with letterboxd equivalents",
+    "version": "1.0",
+    "action": {
+        "default_popup": "hello.html", // TODO rename
+        "default_icon": "assets/letterboxd_logo.png" // TODO Add proper icons of different sizes. Probably can't use their logo directly either.
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "scripts/content.js"
+            ],
+            "matches": [
+                "https://www.google.com/search*"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "assets/letterboxd_logo.png"
+            ],
+            "matches": [
+                "https://www.google.com/*"
+            ]
+        }
+    ]
 }
