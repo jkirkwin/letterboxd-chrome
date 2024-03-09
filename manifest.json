@@ -1,8 +1,9 @@
 {
     "manifest_version": 3,
     "name": "Chrome Letterboxd",
-    "description": "Replace google watchlist actions with letterboxd equivalents",
-    "version": "1.0",
+    "description": "Add letterboxd entries to google search results for films",
+    "version": "0.0.0.1",
+    "version_name": "Alpha",
     "action": {
         "default_popup": "popup.html"
     },
