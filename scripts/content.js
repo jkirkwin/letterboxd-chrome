@@ -13,7 +13,7 @@ function error(message) {
 }
 
 function tryAddFilmInfo() {
-    // TODO This won't work for obscure movies that don't have any watch options. 
+    // TODO This won't work for obscure movies that don't have any watch options, or new movies that aren't available to stream yet.
     // E.g. https://www.google.com/search?q=chaos+DeFalco, https://www.google.com/search?q=four+lions
     // Find a backup option to use to get formatting and detect that the user did in fact search a movie.
     const watchMovieDiv = document.querySelector('div[aria-label="Watch movie"]');
