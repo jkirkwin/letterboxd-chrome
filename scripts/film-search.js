@@ -1,4 +1,4 @@
-const extensionLogPrefix = "letterboxd-chrome: "
+const extensionLogPrefix = "[letterboxd-chrome film-search]"
 
 function log(message) {
     console.log(extensionLogPrefix + message)

@@ -16,10 +16,18 @@
     "content_scripts": [
         {
             "js": [
-                "scripts/content.js"
+                "scripts/film-search.js"
             ],
             "matches": [
                 "https://www.google.com/search*"
+            ]
+        },
+        {
+            "js": [
+                "scripts/letterboxd-qol.js"
+            ],
+            "matches": [
+                "https://letterboxd.com/*"
             ]
         }
     ],
