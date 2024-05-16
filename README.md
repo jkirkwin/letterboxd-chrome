@@ -1,7 +1,10 @@
 # letterboxd-chrome
 A simple chrome extension to add functionality to google's film search results.
 
+[View on the Chrome Web Store](https://chromewebstore.google.com/detail/ajjnboiblcinhjipfepacahbmfhdhkad)
+
 ## How it works
+
 When a user searches for a film, google provides extra panels with links to watch the movie on different streaming services, to mark the film as watched, add it to the user's watchlist, etc. The extension monitors the page structure, detects when these panels are present, and inserts utilities into the page.
 
 The extension also adds some quality of life features to the letterboxd website.
