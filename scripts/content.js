@@ -12,7 +12,23 @@ function error(message) {
     console.error(extensionLogPrefix + message)
 }
 
+/*
+ * Make a best-effort determination of whether the current page is a google search for a
+ * film based on what elements of the expected film metadata we can find in the DOM.
+ */
+function isFilmSearchPage() {
+    // The layout and content in a search result page for a film is highly variable. We check that there is a
+    // button included in the page to add an item to the user's google watchlist, and attempt to ensure that
+    // it is a film by searching for a metadata tag. It is possible that this check will still fail in some edge
+    // cases.
+    const hasWatchlistButton = document.querySelector('div[aria-label*="Want to watch"][role="button"]') ?? false
+    const hasFilmMetadataTag = document.querySelector("div[data-maindata*='[\"FILM\"]'") ?? false
+    return hasWatchlistButton && hasFilmMetadataTag
+}
+
 function tryAddFilmInfo() {
+    // Search for side panel. Use watchlist button and work upwards to a parent?    
+
     // TODO This won't work for obscure movies that don't have any watch options, or new movies that aren't available to stream yet.
     // E.g. https://www.google.com/search?q=chaos+DeFalco, https://www.google.com/search?q=four+lions
     // Find a backup option to use to get formatting and detect that the user did in fact search a movie.
@@ -88,4 +104,6 @@ function buildLetterboxdSearchSection(watchMovieDiv, filmTitle) {
 // where the user can switch between movies, we need to redo the link generation process. Likely we can just detect changes
 // to the search query and/or url.
 
-tryAddFilmInfo()
+if (isFilmSearchPage()) {
+    tryAddFilmInfo()
+}
